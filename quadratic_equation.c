@@ -11,15 +11,15 @@ double absolute(double a){
 }
 
 int linear(double b, double c){
-    printf("Вы ввели линейное уравнение \n");
+    printf("Р’С‹ РІРІРµР»Рё Р»РёРЅРµР№РЅРѕРµ СѓСЂР°РІРЅРµРЅРёРµ \n");
         if(absolute(b) < epsilon && absolute(c) < epsilon){
-            printf("x - любое \n");
+            printf("x - Р»СЋР±РѕРµ \n");
         }
         else if(absolute(b) < epsilon && absolute(c) >= epsilon){
-            printf("Нет решений \n");
+            printf("РќРµС‚ СЂРµС€РµРЅРёР№ \n");
         }
         else{
-            printf("Корень уравнения x = %lf \n", -c/b);
+            printf("РљРѕСЂРµРЅСЊ СѓСЂР°РІРЅРµРЅРёСЏ x = %lf \n", -c/b);
         }
         return 0;
 
@@ -27,8 +27,8 @@ int linear(double b, double c){
 
 int main(){
     double a_coof = 0, b_coof = 0, c_coof = 0;
-    printf("Это программа для решения квадратных уравнений. \n");
-    printf("На следующей строке введите коэфициенты квадратного уравнения: \n");
+    printf("Р­С‚Рѕ РїСЂРѕРіСЂР°РјРјР° РґР»СЏ СЂРµС€РµРЅРёСЏ РєРІР°РґСЂР°С‚РЅС‹С… СѓСЂР°РІРЅРµРЅРёР№. \n");
+    printf("РќР° СЃР»РµРґСѓСЋС‰РµР№ СЃС‚СЂРѕРєРµ РІРІРµРґРёС‚Рµ РєРѕСЌС„РёС†РёРµРЅС‚С‹ РєРІР°РґСЂР°С‚РЅРѕРіРѕ СѓСЂР°РІРЅРµРЅРёСЏ: \n");
     scanf("%lf%lf%lf", &a_coof, &b_coof, &c_coof);
 
 
@@ -42,21 +42,23 @@ int main(){
     double D = b_coof*b_coof - 4*a_coof*c_coof;
 
     if(D >= epsilon){
-        printf("У уравнения два реальных корня:\n");
+        printf("РЈ СѓСЂР°РІРЅРµРЅРёСЏ РґРІР° СЂРµР°Р»СЊРЅС‹С… РєРѕСЂРЅСЏ:\n");
         printf("x1 = %f \n", (-b_coof+sqrt(D))/(2*a_coof));
         printf("x2 = %f \n", ((-b_coof-sqrt(D))/(2*a_coof)));
     }
     else if(absolute(D) < epsilon){
-        printf("У уравнения 1 корень x = %f \n", -b_coof/(2*a_coof));
+        printf("РЈ СѓСЂР°РІРЅРµРЅРёСЏ 1 РєРѕСЂРµРЅСЊ x = %f \n", -b_coof/(2*a_coof));
 
     }
     else{
-        double real_part = -b_coof/(2*a_coof);    //реальная часть
-        double comp_part = sqrt(-D)/(2*a_coof);   //мнимая часть
-        printf("У уравнения 2 комплексных корня: \n");
+        double real_part = -b_coof/(2*a_coof);    //СЂРµР°Р»СЊРЅР°СЏ С‡Р°СЃС‚СЊ
+        double comp_part = sqrt(-D)/(2*a_coof);   //РјРЅРёРјР°СЏ С‡Р°СЃС‚СЊ
+        printf("РЈ СѓСЂР°РІРЅРµРЅРёСЏ 2 РєРѕРјРїР»РµРєСЃРЅС‹С… РєРѕСЂРЅСЏ: \n");
         printf("x1 = %f + %f*i \n", real_part, comp_part);
         printf("x2 = %f - %f*i \n", real_part, comp_part);
     }
 
     return 0;
 }
+
+
