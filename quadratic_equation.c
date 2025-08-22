@@ -10,7 +10,7 @@ double absolute(double a){
     return a;
 }
 
-int linear(double b, double c){
+int linear(double b, double c){         //функция которая решает линейное уравнение
     printf("Вы ввели линейное уравнение \n");
         if(absolute(b) < epsilon && absolute(c) < epsilon){
             printf("x - любое \n");
@@ -32,10 +32,10 @@ int main(){
     scanf("%lf%lf%lf", &a_coof, &b_coof, &c_coof);
 
 
+    //условие на то что коэфициент перед x^2 равен 0
     if(absolute(a_coof) < epsilon){
         linear(b_coof, c_coof);
         return 0;
-
     }
 
 
@@ -48,7 +48,6 @@ int main(){
     }
     else if(absolute(D) < epsilon){
         printf("У уравнения 1 корень x = %f \n", -b_coof/(2*a_coof));
-
     }
     else{
         double real_part = -b_coof/(2*a_coof);    //реальная часть
