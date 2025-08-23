@@ -4,15 +4,16 @@
 #include <assert.h>
 
 const double EPSILON = 1e-6;
-int roots = 0;
+int roots = 0; //количество корней
 
-//                 ПРОТОТИПЫ
+//                   ПРОТОТИПЫ
 double absolute(double a);
 int is_zero(double x);
 int linear(double b, double c, double* x);
 int processing(double a, double b, double c,
                double* x1_r, double* x2_r, double* x_c);
 int output(double x1_r, double x2_r, double x_c);
+void RESHATEL_URAVNENIY();
 int input(double* a, double* b, double* c);
 void run_tests();
 
@@ -27,10 +28,7 @@ int main() {
         run_tests();
     }
     else if (mode == 2) {
-        double a=0, b=0, c=0, x1=0, x2=0, xc=0;
-        input(&a, &b, &c);
-        processing(a, b, c, &x1, &x2, &xc);
-        output(x1, x2, xc);
+        RESHATEL_URAVNENIY();
     }
     else {
         printf("Ошибка: учитесь читать.\n");
@@ -44,7 +42,10 @@ int main() {
 
 // возвращает абсолютное значение числа double
 double absolute(double a) {
-    return (a < 0) ? -a : a;
+    if(a < 0){
+        return -a;
+    }
+    return a;
 }
 
 // проверка близости к нулю
@@ -52,12 +53,19 @@ int is_zero(double x) {
     return absolute(x) < EPSILON;
 }
 
+//РЕШАТЕЛЬ КВАДРАТНОГО УРАВНЕНИЯ
+void RESHATEL_URAVNENIY(){
+    double a=0, b=0, c=0, x1=0, x2=0, xc=0;
+    input(&a, &b, &c);
+    processing(a, b, c, &x1, &x2, &xc);
+    output(x1, x2, xc);
+}
 // Решение линейного уравнения
 int linear(double b, double c, double* x) {
     if (is_zero(b) && is_zero(c)) {
         roots = -1; // бесконечно много решений
     } else if (is_zero(b) && !is_zero(c)) {
-        roots = 0; // нет решений
+        roots = 0;
     } else {
         roots = 1;
         *x = -c / b;
@@ -65,7 +73,7 @@ int linear(double b, double c, double* x) {
     return 0;
 }
 
-// Решение квадратного уравнения
+// Решение неквадратного уравнения
 int processing(double a, double b, double c,
                double* x1_r, double* x2_r, double* x_c) {
     if (is_zero(a)) {
@@ -135,7 +143,7 @@ int input(double* a, double* b, double* c) {
 }
 
 
-//                             ЮНИТ-ТЕСТЫ 
+//                             ЮНИТ-ТЕСТЫ
 void run_tests() {
     double x1, x2, xc;
 
