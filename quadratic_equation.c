@@ -73,7 +73,7 @@ int linear(double b, double c, double* x) {
     return 0;
 }
 
-// Решение неквадратного уравнения
+// Решение нелинейного уравнения
 int processing(double a, double b, double c,
                double* x1_r, double* x2_r, double* x_c) {
     if (is_zero(a)) {
@@ -225,4 +225,5 @@ void run_tests() {
 
 
  }
+
 
